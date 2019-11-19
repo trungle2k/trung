@@ -1,0 +1,44 @@
+
+#define hongngoai1 3
+#define hongngoai2 4
+#define hongngoai3 5
+#define hongngoai4 6
+
+int benphai;
+int bentrai;
+int giatrilech;
+void setup() {
+
+  pinMode(hongngoai1, INPUT);
+  pinMode(hongngoai2, INPUT);
+  pinMode(hongngoai3, INPUT);
+  pinMode(hongngoai4, INPUT);
+  Serial.begin(9600);
+
+}
+void loop() {
+ int led2 = digitalRead(4);
+ int led3 = digitalRead(5);
+ int led1 = digitalRead(3);
+ int led4 = digitalRead(6);
+  benphai = digitalRead(5) + digitalRead(6);
+  bentrai = digitalRead(3) + digitalRead(4);
+ 
+  if ( led1 == 0 && led2 == 0 && led3 == 0 && led4 ==0 ) {
+    Serial.println("lùi");
+  }
+  else {giatrilech = benphai - bentrai;}
+  if (giatrilech < 0) {
+    Serial.println("Lệch trái");
+    
+  }
+  else if (giatrilech > 0) {
+  Serial.println("Lệch phải");
+  
+  }
+  else if (led2 == 1 && led3 == 1 && led1 == 0 && led4 == 0) {
+  Serial.println("Đi thẳng");
+ 
+  }
+}
+
